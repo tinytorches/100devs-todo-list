@@ -1,9 +1,17 @@
 const express = require('express');
-const app = express()
+const app = express();
+
+app.set('view engine', 'ejs');
+
+let todoList = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+];
 
 // ========== Express Routes ========== //
 app.get('/', (req, res) => {
-    res.send('<h1>Hello World</h1>');
+    res.render('index');
 });
 
 
