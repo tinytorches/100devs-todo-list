@@ -2,6 +2,11 @@
 /* CSS
 /*******************************************/
 
+/* Colors */
+/* dark grey: #333333 */
+/* white: #E3E3DF */
+/* light blue: #D6E0E5 */
+
 /* Box Model Hack */
 *{
     margin: 0;
@@ -13,14 +18,15 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
-header {
+body {
+    min-height: 100vh;
+    background-color: #E3E3DF;
+}
+
+header, form {
+    min-height: 20vh;
     display: flex;
     justify-content: center;
-}
-  
-.container {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
   
@@ -30,16 +36,25 @@ header {
 header > h1 {
     font-family: 'IBM Plex Mono', sans-serif;
     font-size: 4.2rem;
+    color: #333333
 }
 
-input {
+form > input, form > button {
     font-family: 'Roboto', sans-serif;
     font-size: 1.8rem;
     padding: .8rem 1.4rem;
+    border: none;
+
 }
 
-button {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.8rem;
-    padding: .8rem 1.4rem;
+form > button {
+    background: #333333;
+    color: #E3E3DF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form > button:hover {
+    background: #E3E3DF;
+    color: #333333;
 }
