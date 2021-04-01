@@ -3,16 +3,15 @@ const app = express()
 
 // ========== Express Routes ========== //
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.send('<h1>Hello World</h1>');
 });
 
 
 
-// ========== Route Catcher ========== //
+// ========== Route Error Catcher ========== //
 app.get('*', (req, res) => {
-    res.send(console.log('Invalid Page'))
-    res.send('<h1>Invalid Page</h1>')
-})
+    res.send(console.log('Invalid Page'));
+});
 
 // ========== Server Listening ========== //
 const port = process.env.PORT || 3000;
