@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
 
-    <!-- External CSS Link -->
+    <!-- External CSS Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
 
     <!-- External Fonts -->
@@ -18,12 +19,24 @@
     </header>
     
     <div>
+
         <form>
             <input type="text" class="todoInput">
-            <button class="todoButton" type="submit">Add</button>
+            <!-- <button class="todoButton" type="submit">Add</button> -->
+            <button type="submit" class="todoButton">
+                <i class="fas fa-plus-square"></i>
+            </button>
         </form>
-    </div>
-    
+
+        <div class="todoContainer">
+            <ul class="todoList">
+                <div class="todo">
+                    <!-- <li></li> -->
+                    <!-- <button></button> -->
+                </div>
+            </ul>
+        </div>
+        
     </div>
 
 </body>

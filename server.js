@@ -1,9 +1,26 @@
 const express = require('express');
 const app = express();
+const MongoClient = require('mongodb').MongoClient;
+const PORT = 3000;
+require('dotenv').config();
+
+// ========== Connect to DB ========== //
+let db,
+    dbConnectionStr = process.env.DB_STRING,
+    dbName = 'tattooine';
+
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+    .then(client => {
+        console.log(`Connected to ${dbName}`);
+        db = client.db(dbName);
+    });
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'))
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// ========== List ========== //
 let todoList = [
     'Item 1',
     'Item 2',
@@ -12,7 +29,7 @@ let todoList = [
 
 // ========== Express Routes ========== //
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index.ejs');
 });
 
 
@@ -23,5 +40,6 @@ app.get('*', (req, res) => {
 });
 
 // ========== Server Listening ========== //
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`Server running on port ${PORT}...`)
+});
