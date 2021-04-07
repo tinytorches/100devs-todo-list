@@ -18,6 +18,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         console.log(err);
     });
 
+// ========== Setting up our server ========== //
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -35,11 +36,18 @@ app.get('/', (req, res) => {
     res.render('index.ejs');
 });
 
+app.post('/createTodo', (req, res) => {
+    db.collection('todoList').insertOne({todo: req.body.todoItem, completed: false})
+    .then(result => {
+        console.log('Todo has been added to the list!');
+        res.redirect('/');
+    })
+});
 
 
 // ========== Route Error Catcher ========== //
 app.get('*', (req, res) => {
-    res.send(console.log('Invalid Page'));
+    res.send(console.log('Invalid page request...'));
 });
 
 // ========== Server Listening ========== //

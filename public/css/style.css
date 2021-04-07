@@ -29,6 +29,14 @@ header, form {
     justify-content: center;
     align-items: center;
 }
+
+.todoList > li {
+    min-height: 10vh;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   
 /******************************************
 /* ADDITIONAL STYLES

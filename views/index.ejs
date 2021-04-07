@@ -13,31 +13,24 @@
     <!-- External Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600;700&family=Roboto&display=swap" rel="stylesheet">  
 </head>
+
 <body>
     <header>
         <h1>Todo List</h1>
     </header>
     
-    <div>
+    <div class="todoContainer">
+        <ul class="todoList">
+            <li>This is where todos will eventually go</li>
+        </ul>
 
-        <form>
-            <input type="text" class="todoInput">
-            <!-- <button class="todoButton" type="submit">Add</button> -->
-            <button type="submit" class="todoButton">
+        <form action="/createTodo" method="POST">
+            <input class="todoInput" type="text" placeholder="New task" name="todoItem">
+            <button class="todoButton" type="submit">
                 <i class="fas fa-plus-square"></i>
             </button>
         </form>
-
-        <div class="todoContainer">
-            <ul class="todoList">
-                <div class="todo">
-                    <!-- <li></li> -->
-                    <!-- <button></button> -->
-                </div>
-            </ul>
-        </div>
-        
     </div>
-
 </body>
+
 </html>
