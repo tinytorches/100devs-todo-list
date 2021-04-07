@@ -30,12 +30,25 @@ header, form {
     align-items: center;
 }
 
-.todoList > li {
-    min-height: 10vh;
-    font-size: 1.6rem;
+.todoContainer {
+    margin: auto 24vw;
+}
+
+.todoList {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.todo {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 8px auto;
+}
+
+.todo span {
+    padding-right: 8px;
 }
   
 /******************************************
@@ -47,12 +60,35 @@ header > h1 {
     color: #333333
 }
 
+/* How do I hide the bullet from a ul that is being made with EJS? */
+.todo:marker {
+    list-style: none;
+}
+
+span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3.2rem;
+}
+
+.todo > button {
+    background: #333333;
+    border: none;
+    color: #E3E3DF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 1.4rem 1.4rem;
+}
+
+.todo > button:hover {
+    background: #E93B22;
+    color: #333333;
+}
+
 form > input, form > button {
     font-family: 'Roboto', sans-serif;
     font-size: 1.8rem;
     padding: .8rem 1.4rem;
     border: none;
-
 }
 
 form > button {

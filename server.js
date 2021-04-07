@@ -33,7 +33,11 @@ let todoList = [
 
 // ========== Express Routes ========== //
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    db.collection('todoList').find().toArray()
+    .then(data => {
+        res.render('index.ejs', {zebra: data})
+    });
+    
 });
 
 app.post('/createTodo', (req, res) => {
@@ -41,7 +45,7 @@ app.post('/createTodo', (req, res) => {
     .then(result => {
         console.log('Todo has been added to the list!');
         res.redirect('/');
-    })
+    }); 
 });
 
 

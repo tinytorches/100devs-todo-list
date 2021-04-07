@@ -21,7 +21,17 @@
     
     <div class="todoContainer">
         <ul class="todoList">
-            <li>This is where todos will eventually go</li>
+        <% for(let i = 0; i < zebra.length; i++) { %>
+            <div class="todo">
+                <li>
+                    <span> <%= zebra[i].todo %> </span>
+                </li>
+                <button>
+                    <i class="fas fa-check"></i>
+                </button>    
+            </div>
+            
+        <% } %>
         </ul>
 
         <form action="/createTodo" method="POST">
