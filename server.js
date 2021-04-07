@@ -11,8 +11,11 @@ let db,
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
-        console.log(`Connected to ${dbName}`);
+        console.log(`Noice! Connected to ${dbName} database...`);
         db = client.db(dbName);
+    })
+    .catch(err => {
+        console.log(err);
     });
 
 app.set('view engine', 'ejs');
