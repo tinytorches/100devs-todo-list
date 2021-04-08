@@ -1,4 +1,4 @@
-const { response } = require("express");
+// alert('Test test...')
 
 const deleteButton = document.querySelectorAll('.delete');
 

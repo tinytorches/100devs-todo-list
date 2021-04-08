@@ -49,6 +49,7 @@ app.post('/createTodo', (req, res) => {
 });
 
 app.delete('/deleteTodo', (req, res) => {
+    console.log(req.body.textToDelete);
     db.collection('todoList').deleteOne({todo: req.body.textToDelete})
     .then(result => {
         console.log('Deleted Todo');
