@@ -48,6 +48,16 @@ app.post('/createTodo', (req, res) => {
     }); 
 });
 
+app.delete('/deleteTodo', (req, res) => {
+    db.collection('todoList').deleteOne({todo: req.body.textToDelete})
+    .then(result => {
+        console.log('Deleted Todo');
+        res.json('Deleted it');
+    })
+    .catch(err => {
+        console.log(err);
+    });
+});
 
 // ========== Route Error Catcher ========== //
 app.get('*', (req, res) => {
