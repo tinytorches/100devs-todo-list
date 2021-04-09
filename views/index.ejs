@@ -15,33 +15,31 @@
 </head>
 
 <body>
-    <header>
-        <h1>Todo List</h1>
-    </header>
-    
-    <div class="todoContainer">
-        <ul class="todoList">
-        <% for(let i = 0; i < zebra.length; i++) { %>
-            <div class="todo">
-                <li>
-                    <span> <%= zebra[i].todo %> </span>
-                    <!-- <span class="delete"> Delete </span> -->
-                    <button class="delete">
-                        <i class="fas fa-check"></i>
-                    </button>
-                </li>
-            </div>
-            
-        <% } %>
-        </ul>
-
-        <form action="/createTodo" method="POST">
-            <input class="todoInput" type="text" placeholder="New task" name="todoItem">
-            <button class="todoButton" type="submit">
-                <i class="fas fa-plus-square"></i>
+    <h1>Todo List</h1>
+    <ul class="todoList">
+    <% for(let i = 0; i < zebra.length; i++) { %>
+        <li class="todo">
+            <% if(zebra[i].completed === true) {%>
+            <span class="completed"><%= zebra[i].todo %></span>
+            <% } else { %>
+            <span><%= zebra[i].todo %></span>
+            <!-- <span class='delete'> Delete </span> -->
+            <% } %>
+            <button class="delete">
+                <i class="fas fa-trash-alt"></i>
             </button>
-        </form>
-    </div>
+        </li>
+    <% } %>
+    </ul>
+
+    <h2>Things left to do: <%= left %></h2>
+
+    <form action="/createTodo" method="POST">
+        <input class="todoInput" type="text" placeholder="New task" name="todoItem">
+        <button class="todoButton" type="submit">
+            <i class="fas fa-plus-square"></i>
+        </button>
+    </form>
 
     <script src="js/main.js"></script>
 </body>

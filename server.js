@@ -24,20 +24,17 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// ========== List ========== //
-let todoList = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-];
-
 // ========== Express Routes ========== //
-app.get('/', (req, res) => {
-    db.collection('todoList').find().toArray()
-    .then(data => {
-        res.render('index.ejs', {zebra: data})
-    });
-    
+// app.get('/', (req, res) => {
+//     db.collection('todoList').find().toArray()
+//     .then(data => {
+//         res.render('index.ejs', {zebra: data})
+//     });
+// });
+app.get('/', async (req, res) => {
+    const todoList = await db.collection('todoList').find().toArray();
+    const todoLeft = await db.collection('todoList').countDocuments({completed: false});
+    res.render('index.ejs', {zebra: todoList, left: todoLeft})
 });
 
 app.post('/createTodo', (req, res) => {
@@ -48,8 +45,40 @@ app.post('/createTodo', (req, res) => {
     }); 
 });
 
+app.put('/markComplete', (req, res) => {
+    // console.log(`"${req.body.textToComplete}" has been marked completed...`);
+    db.collection('todoList').updateOne({todo: req.body.textToComplete}, {
+        $set: {
+            completed: true
+        }
+    })
+    .then(result => {
+        console.log('Marked Complete');
+        res.json('Marked Complete')
+    })
+    .catch(err => { 
+        console.log(err)
+    }); 
+});
+
+app.put('/undo', (req, res) => {
+    // console.log(`"${req.body.textToUndo}" has been marked undone...`);
+    db.collection('todoList').updateOne({todo: req.body.textToUndo}, {
+        $set: {
+            completed: false
+        }
+    })
+    .then(result => {
+        console.log('Todo Marked Undone');
+        res.json('Todo Marked Undone')
+    })
+    .catch(err => { 
+        console.log(err)
+    }); 
+});
+
 app.delete('/deleteTodo', (req, res) => {
-    console.log(req.body.textToDelete);
+    // console.log(`"${req.body.textToDelete}" has been deleted...`);
     db.collection('todoList').deleteOne({todo: req.body.textToDelete})
     .then(result => {
         console.log('Deleted Todo');

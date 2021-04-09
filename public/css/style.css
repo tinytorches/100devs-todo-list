@@ -23,15 +23,18 @@ body {
     background-color: #E3E3DF;
 }
 
-header, form {
+h1, form {
     min-height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.todoContainer {
-    margin: auto 24vw;
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 16vh;
 }
 
 .todoList {
@@ -46,7 +49,7 @@ header, form {
     margin: 8px auto;
 }
 
-.todo > li {
+.todo {
     display: flex;
     align-items: center;
 }
@@ -58,15 +61,30 @@ header, form {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
-header > h1 {
+h1 {
     font-family: 'IBM Plex Mono', sans-serif;
     font-size: 4.2rem;
     color: #333333
 }
 
+h2 {
+    font-family: 'IBM Plex Mono', sans-serif;
+    font-size: 2.4rem;
+    color: #333333
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #bebebe;
+}
+
 span {
     font-family: 'Roboto', sans-serif;
     font-size: 3.2rem;
+}
+
+span:hover {
+    cursor: pointer;
 }
 
 .todo button {
@@ -78,16 +96,20 @@ span {
     padding: 1.4rem 1.4rem;
 }
 
+.todo i {
+    font-size: 1.8rem;
+}
+
 .todo button:hover {
     background: #E93B22;
     color: #333333;
 }
 
 /* New todo entry form */
-form > input, form > button {
+form > input {
     font-family: 'Roboto', sans-serif;
     font-size: 1.8rem;
-    padding: .8rem 1.4rem;
+    padding:1.2rem;
     border: none;
 }
 
@@ -96,6 +118,12 @@ form > button {
     color: #E3E3DF;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: none;
+    padding: 1.4rem;
+}
+
+form i {
+    font-size: 1.8rem;
 }
 
 form > button:hover {
